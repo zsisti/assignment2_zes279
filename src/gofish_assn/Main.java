@@ -29,7 +29,7 @@ public class Main {
 		
 		Player p1 = new Player("Jane");
 		System.out.println(p1.getName());
-		
+
 		
 	}
 

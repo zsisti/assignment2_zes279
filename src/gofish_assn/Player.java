@@ -172,7 +172,7 @@ public class Player {
 		c = hand.get(0);
     	return c;
     }
-    
+    /*
     //Does the player have the card c in her hand?
     public boolean cardInHand(Card c) {
     	return false; //stubbed
@@ -187,5 +187,5 @@ public class Player {
     public boolean sameRankInHand(Card c) {
     	return false; //stubbed
     }
-
+*/
 }

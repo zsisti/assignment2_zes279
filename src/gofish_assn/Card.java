@@ -37,19 +37,46 @@ public class Card {
 		rank = r;
 		suit = s;
 	}
-	
-	private Suits toSuit(char c) {
-		return Suits.spade; //dummy
+
+	/**
+	 * Method that converts the first letter of a Suit to the Suit
+	 * @param c char representing the first letter of a Suit
+	 * @return Suit that the char was referring to
+	 */
+	private Suits toSuit(char c)
+	{
+		if (c == 's' || c == 'S') return Suits.spade;
+		else if (c == 'h' || c == 'H') return Suits.heart;
+		else if (c == 'd' || c == 'D') return Suits.diamond;
+		else if (c == 'c' || c == 'C') return Suits.club;
+		else System.out.print("That is not a suit");
 	}
-	
+
+	/**
+	 * Method that converts a Suit to a String
+	 * @param s Suit to be converted
+	 * @return String that represents a Suit
+	 */
 	private String suitToString(Suits s)
 	{
-		return "s"; //dummy
+		if (s == Suits.club) return "Clubs";
+		else if (s == Suits.heart) return "Hearts";
+		else if (s == Suits.diamond) return "Diamonds";
+		else return "Spades";
 	}
-	
+
+	/**
+	 * Method that converts a rank to a String
+	 * @param r int representing a rank to be converted
+	 * @return String that represents a rank
+	 */
 	private String rankToString(int r)
 	{
-		return "A"; //dummy
+		if (r == 11) return "Jack";
+		else if (r == 12) return "Queen";
+		else if (r == 13) return "King";
+		else if (r == 1) return "Ace";
+		else return String.valueOf(r);
 	}
 
 	/**
@@ -75,7 +102,7 @@ public class Card {
 	public String toString() {
 		String s = "";
 		
-		s = s + rankToString(getRank()) + suitToString(getSuit());
+		s = s + rankToString(getRank()) + " of " + suitToString(getSuit());
 		
 		return s;
 	}
