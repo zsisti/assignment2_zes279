@@ -5,6 +5,7 @@ package gofish_assn;
 public class Main {
 	
 	public static void main(String args[]) {
+		/*
 		System.out.println("Hello World!");
 		
 		Card c = new Card();
@@ -29,7 +30,8 @@ public class Main {
 		
 		Player p1 = new Player("Jane");
 		System.out.println(p1.getName());
-
+		*/
+		GoFishGame game1 = new GoFishGame();
 		
 	}
 

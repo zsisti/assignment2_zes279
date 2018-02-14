@@ -64,18 +64,20 @@ public class Deck {
 	 * Method that prints the deck of cards
 	 */
 	public void printDeck() {
-		for (int i=0; i<NUM_CARDS; i++){
+		for (int i=0; i<deck.size(); i++){
 			System.out.println((deck.get(i)).toString());
 		}
 	}
-	
-	
+
+	/**
+	 * Method that returns the top Card of the deck and removes said card from the deck
+	 * @return Card at the top of the deck
+	 */
 	public Card dealCard() {
-		
 		Card c = new Card();
-		
+		c = deck.get(deck.size()-1);
+		deck.remove(deck.size()-1);
 		return c;
-		
 	}
 	
 

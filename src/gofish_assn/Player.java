@@ -6,9 +6,9 @@ public class Player {
 	
 	ArrayList<Card> hand = new ArrayList<Card>();				//ArrayList containing Player's cards
 	ArrayList<Card> book = new ArrayList<Card>();				//ArrayList containing the Player's pairs
-	ArrayList<Card> fishHelper = new ArrayList<Card>();			//ArrayList to help pick card, [0]: Last Card Player
-																// asked for, [1-3]: Last cards opponent asked for and did not get
-
+    ArrayList<Card> fishHelper = new ArrayList<Card>();		//ArrayList to help pick card, [0]: Last Card Player
+															// asked for and did not get, [1-3]: Last cards opponent
+                                                                //asked for and did not get
 	String name;												//Player's name
 
 	/**
@@ -17,6 +17,12 @@ public class Player {
 	 */
 	public Player(String name) {
 		this.name = name;
+		for (int i=0; i<4; i++){
+		    Card placeHolder = new Card();
+		    placeHolder.rank = 0;
+		    placeHolder.suit = Card.Suits.diamond;
+		    fishHelper.add(placeHolder);
+        }
 	}
 
 	/**
@@ -34,7 +40,7 @@ public class Player {
 	 */
 	public Card removeCardFromHand(Card c) {
 		Card retCard = new Card();								//Card to be returned
-		hand.remove(c);
+        hand.remove(c);
 		retCard.rank = c.getRank();
 		retCard.suit = c.getSuit();
 		return retCard;
@@ -103,21 +109,10 @@ public class Player {
 	 * @return	int specifying location of card in hand
 	 */
 	public int rankInHand(Card c) {
-		Card searchCard = new Card();							//Copy of c, will be given each suit
-		searchCard.rank = c.getRank();
-		searchCard.suit = Card.Suits.club;
-		int index = hand.indexOf(searchCard);					//Location of card in hand
-		if (index != -1) return index;
-		searchCard.suit = Card.Suits.diamond;
-		index = hand.indexOf(searchCard);
-		if (index != -1) return index;
-		searchCard.suit = Card.Suits.heart;
-		index = hand.indexOf(searchCard);
-		if (index != -1) return index;
-		searchCard.suit = Card.Suits.spade;
-		index = hand.indexOf(searchCard);
-		if (index != -1) return index;
-		return -1;
+		for (int i=0; i<hand.size(); i++){
+		    if (hand.get(i).getRank() == c.getRank()) return i;
+        }
+        return -1;
 	}
 
 	//OPTIONAL
@@ -156,15 +151,15 @@ public class Player {
     public Card chooseCardFromHand() {
     	Card c = new Card();
     	int index;
-    	for (int i = 1; i<fishHelper.size(); i++){
-    		index = rankInHand(fishHelper.get(i));
+    	for (int i = 1; i<4; i++){
+    	    index = rankInHand(fishHelper.get(i));
     		if (index != -1){
     			c = hand.get(index);
     			return c;
 			}
 		}
 		for (int i=0; i<hand.size(); i++){
-    		if (hand.get(i)!=fishHelper.get(0)){
+    		if (hand.get(i).getRank() != fishHelper.get(0).getRank()){
     			c = hand.get(i);
     			return c;
 			}

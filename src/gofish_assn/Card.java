@@ -38,6 +38,7 @@ public class Card {
 		suit = s;
 	}
 
+
 	/**
 	 * Method that converts the first letter of a Suit to the Suit
 	 * @param c char representing the first letter of a Suit
@@ -48,8 +49,8 @@ public class Card {
 		if (c == 's' || c == 'S') return Suits.spade;
 		else if (c == 'h' || c == 'H') return Suits.heart;
 		else if (c == 'd' || c == 'D') return Suits.diamond;
-		else if (c == 'c' || c == 'C') return Suits.club;
-		else System.out.print("That is not a suit");
+		else return Suits.club;
+		//else System.out.print("That is not a suit");
 	}
 
 	/**
